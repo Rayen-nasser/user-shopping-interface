@@ -1,0 +1,53 @@
+<div class="mt-5">
+  <form class="mb-2">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Search</mat-label>
+          <input
+            matInput
+            placeholder="Name Product"
+            (keyup)="search($event.target)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Categories</mat-label>
+          <mat-select (selectionChange)="selectCategory($event)">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <app-not-found *ngIf="dataSource.length === 0"></app-not-found>
+
+  <div class="row">
+    <ng-container
+      *ngFor="
+        let item of dataSource
+          | paginate
+            : {
+                id: 'products',
+                itemsPerPage: 3,
+                currentPage: page,
+                totalItems: total
+              };
+        let index = index
+      "
+    >
+      <div class="col-md-4 col-ms-6 my-3">
+        <app-product [data]="item"></app-product>
+      </div>
+    </ng-container>
+  </div>
+  <div class="d-flex justify-content-center mt-5" *ngIf="dataSource.length > 0">
+    <pagination-controls
+      (pageChange)="changePage($event)"
+      id="products"
+    ></pagination-controls>
+  </div>
+</div>

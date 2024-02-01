@@ -1,0 +1,34 @@
+
+<!-- header.component.html -->
+<nav [class.active]="navActive">
+  <div class="nav-bar">
+    <i class='bi bi-list sidebarOpen' (click)="toggleNav()"></i>
+    <span class="logo navLogo"><a href="#">Shopping LG</a></span>
+    <div class="menu">
+      <div class="logo-toggle">
+        <span class="logo"><a href="#">SLG</a></span>
+        <i class='bi bi-x-lg siderbarClose'></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" routerLink="/products" routerLinkActive="active">Products</a></li>
+        <li><a href="#"routerLink="/cart" routerLinkActive="active">Cart</a></li>
+        <li><a href="#" routerLink="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="darkLight-authBox">
+      <div class="dark-light" (click)="toggleDarkMode()" [class.active]="darkMode">
+        <i class='bi' [class.bi-moon]="!darkMode" [class.bi-sun]="darkMode"></i>
+      </div>
+      <div class="authBox">
+        <ng-container *ngIf="token">
+          <i (click)="logout()" class="bi bi-box-arrow-right"></i>
+        </ng-container>
+        <ng-container *ngIf="!token">
+          <a  routerLink="/register">SinUp</a>
+          <!-- <a class="nav-link" routerLink="/login">Login</a> -->
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,49 @@
+<div class="product-card">
+  <div class="logo-cart">
+    <i class="bx bx-shopping-bag"></i>
+  </div>
+  <div
+    class="main-images"
+    [routerLink]="'/details/' + data._id"
+    style="cursor: pointer"
+    #mainImages
+  >
+    <img
+      id="blue"
+      class="blue active"
+      src="{{ data.imageUrl }}"
+      alt="{{ data.name }}"
+    />
+  </div>
+  <div class="shoe-details">
+    <span class="shoe_name">{{ data.name }}</span>
+    <div class="description">{{ data.description }}</div>
+    <div class="stars">
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bxs-star"></i>
+      <i class="bx bx-star"></i>
+    </div>
+  </div>
+  <div class="color-price">
+    <div class="price">
+      <span class="price_num">${{ data.price }}</span>
+      <span class="price_letter"> dollar only</span>
+    </div>
+  </div>
+  <div class="button" *ngIf="!addButton" (click)="addButton = true">
+    <div class="button-layer"></div>
+    <button (click)=" addButton = true" *ngIf="!done">Add To Cart</button>
+    <button *ngIf="done">
+      <i class="bi bi-check-circle-fill"></i> Done
+    </button>
+  </div>
+
+  <!-- Add input and save button for quantity -->
+  <div class="quantity-input" *ngIf="addButton">
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" [(ngModel)]="quantity" min="1" [max]="data.quantity"/>
+    <button (click)="add() ; addButton = false; done = true">Save</button>
+  </div>
+</div>

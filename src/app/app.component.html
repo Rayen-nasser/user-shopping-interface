@@ -1,0 +1,20 @@
+<app-header *ngIf="showHeader"></app-header>
+<div class="container wrapper" >
+  <div class="cart-nav" routerLink="/cart" *ngIf="showCard">
+    <div class="icon">
+      <i class="bi bi-cart3"></i>
+      <span>Cart</span>
+    </div>
+    <div class="item-count">{{ nbProductsInCart  || 0}}</div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+>
+  <p style="color: white"> loading...</p>
+</ngx-spinner>
