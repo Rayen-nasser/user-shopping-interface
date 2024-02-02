@@ -14,7 +14,7 @@ export class ContactService {
   sendMessage(message: any) {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'multipart/form-data');
-    return this.http.post(environment.baseApi.replace('stock', 'auth') + "/send-message", message, { headers });
+    return this.http.post(environment.baseApi.replace('stock', 'contact') + "/send-message", message, { headers });
   }
 
 
