@@ -39,7 +39,6 @@ import { GeoapifyGeocoderAutocompleteModule } from '@geoapify/angular-geocoder-a
     NgxPaginationModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     GeoapifyGeocoderAutocompleteModule.withConfig('be538254c3ed4f7cad1d8a79df794883')
-
   ],
   exports: [
     NgxPaginationModule,

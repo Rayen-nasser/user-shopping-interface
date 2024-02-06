@@ -28,9 +28,9 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductsInCart();
+    this.getUserData();
     if (this.cartProducts.length > 0) {
       this.cardVide = true;
-      this.getUserData();
     }
   }
 
@@ -108,7 +108,7 @@ export class CartComponent implements OnInit {
     this.getUserData();
 
     let Model = {
-      userId: this.userDate['userId'],
+      userId: this.userDate['_id'  || 'userId'],
       date: new Date(),
       products: products,
       amountTotal: this.totalPrice.toFixed(2),
