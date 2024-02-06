@@ -1,52 +1,38 @@
-<div class="container mt-5">
-  <div class="forms">
-    <div class="form login">
-      <span class="title">Login</span>
-      <form [formGroup]="loginForm">
-        <div class="input-field">
-          <input
-            formControlName="email"
-            type="email"
-            placeholder="Enter your email"
-            required
-          />
-          <i class="bi bi-envelope-at-fill"></i>
-        </div>
-        <div class="input-field">
-          <input
-            formControlName="password"
-            type="password"
-            class="password"
-            placeholder="Enter your password"
-            required
-          />
-          <i class="bi bi-shield-lock-fill"></i>
-
-        </div>
-        <div class="checkbox-text">
-          <div class="checkbox-content">
-            <input type="checkbox" id="logCheck" />
-            <label for="logCheck" class="text">Remember me</label>
-          </div>
-
-          <a href="#" class="text">Forgot password?</a>
-        </div>
-        <div class="input-field button">
-          <button
-            class="input-field button my-1"
-            (click)="login()"
-            [disabled]="loginForm.invalid"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-      <div class="login-signup">
-        <span class="text"
-          >Not a member?
-          <a href="#" class="text signup-link" routerLink="/register">Signup Now</a>
-        </span>
-      </div>
-    </div>
+<div class="container">
+  <div class="img">
+    <img src="/assets/signup.png" alt="signup" />
   </div>
+  <form class="form" [formGroup]="loginForm">
+    <p class="title">Login</p>
+    <p class="message">SignIn now and get full access to our app.</p>
+    <label>
+      <input
+        formControlName="email"
+        required=""
+        placeholder=""
+        type="email"
+        class="input"
+      />
+      <span>Email</span>
+    </label>
+
+    <label>
+      <input
+        formControlName="password"
+        required=""
+        placeholder=""
+        type="password"
+        class="input"
+      />
+      <span>Password</span>
+    </label>
+
+    <button class="submit" (click)="login()" [disabled]="loginForm.invalid">
+      Submit
+    </button>
+    <p class="signin">
+      Already have an acount ?
+      <a href="#" routerLink="/register" class="text login-link">Signup</a>
+    </p>
+  </form>
 </div>

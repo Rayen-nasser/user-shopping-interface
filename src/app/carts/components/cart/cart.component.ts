@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartsService } from '../services/carts.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -10,12 +10,13 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
-  cartProducts: any[] = []; // Initialize the array
+export class CartComponent implements OnInit, OnDestroy {
+  cartProducts: any[] = [];
 
   totalPrice: any;
   userDate: any;
   cardVide: boolean = false;
+  private playerAdded = false;
 
   constructor(
     private service: CartsService,
@@ -27,8 +28,17 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const cartData = localStorage.getItem('cart');
+    if (!cartData && !this.playerAdded) {
+      this.loadLottie();
+      this.playerAdded = true;
+    }
+
     this.getProductsInCart();
+
     this.getUserData();
+    console.log(this.userDate);
+
     if (this.cartProducts.length > 0) {
       this.cardVide = true;
     }
@@ -82,6 +92,8 @@ export class CartComponent implements OnInit {
     this.totalPrice = 0;
     window.dispatchEvent(new StorageEvent('storage', { key: 'cart' }));
     this.getPriceTotal();
+    this.cardVide = false
+    this.loadLottie()
   }
 
   getUserData() {
@@ -96,6 +108,7 @@ export class CartComponent implements OnInit {
   order() {
     if (!localStorage.getItem('token')) {
       this.toaster.error('You Must Be Authentication');
+      this.router.navigate(['/login'])
       return;
     }
 
@@ -108,7 +121,7 @@ export class CartComponent implements OnInit {
     this.getUserData();
 
     let Model = {
-      userId: this.userDate['_id'  || 'userId'],
+      userId: this.userDate['userId'  || '_id'],
       date: new Date(),
       products: products,
       amountTotal: this.totalPrice.toFixed(2),
@@ -131,5 +144,29 @@ export class CartComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.router.navigate(['/products'])
     });
+  }
+
+  ngOnDestroy(): void {
+    const player = document.querySelector('dotlottie-player');
+    if (player) {
+      player.remove();
+      this.playerAdded = false;
+    }
+  }
+
+  loadLottie() {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs';
+    script.type = 'module';
+    document.body.appendChild(script);
+
+    const player = document.createElement('dotlottie-player');
+    player.setAttribute('src', 'https://lottie.host/fc78468d-b992-41dd-b54a-91baf34802a9/8r5bOEakmE.json');
+    player.setAttribute('background', 'transparent');
+    player.setAttribute('speed', '1');
+    player.setAttribute('style', 'display: flex;justify-content: center;align-items: center;height: 80vh;');
+    player.setAttribute('loop', '');
+    player.setAttribute('autoplay', '');
+    document.body.appendChild(player);
   }
 }

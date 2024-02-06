@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
   <header>Send us a Message</header>
   <form  [formGroup]="contactForm" >
     <div class="dbl-field">
@@ -25,5 +25,43 @@
       <button  (click)="createMessage()" >Send Message</button>
       <span></span>
     </div>
+  </form>
+</div> -->
+
+
+<div class="container">
+  <div class="img">
+    <img src="/assets/contact.gif" alt="signup">
+  </div>
+  <form class="form" [formGroup]="contactForm">
+    <p class="title">Contact </p>
+    <p class="message">Compose your message below to interact with our app. </p>
+        <div class="flex">
+        <label>
+            <input  formControlName="name" required="" placeholder="" type="text" class="input">
+            <span>Name</span>
+        </label>
+
+        <label>
+            <input formControlName="subject" required="" placeholder="" type="text" class="input">
+            <span>Subject</span>
+        </label>
+    </div>
+
+    <label>
+        <input formControlName="email" required="" placeholder="" type="email" class="input">
+        <span>Email</span>
+    </label>
+
+    <label>
+      <textarea formControlName="body" required="" rows="3" placeholder="" class="input input01 textarea"></textarea>
+      <span>message</span>
+  </label>
+
+    <button class="submit"(click)="createMessage()" [disabled]="contactForm.invalid">Send</button>
+    <p class="signin">
+      Return Back To
+      <a href="#" routerLink="/" class="text login-link">Shopping</a>
+    </p>
   </form>
 </div>

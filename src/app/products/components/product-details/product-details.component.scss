@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@import "/src/styles.scss";
 
 /**************************************************************/
 
@@ -22,7 +22,7 @@
   width: 100%;
   border-radius: 12px;
   clip-path: circle(65% at left 35%);
-  background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
+  background-color: #2d8cf0;
 }
 
 .container .box.one {

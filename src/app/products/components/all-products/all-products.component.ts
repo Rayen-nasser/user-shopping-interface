@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { Product } from '../../models/product';
 import { ToastrService } from 'ngx-toastr';
@@ -6,19 +6,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.scss'],
-  animations: [
-    trigger('flyInOut', [
-      state('in', style({ opacity: 1, transform: 'translateX(0)' })),
-      transition('void => *', [
-        style({ opacity: 0, transform: 'translateX(-100%)' }),
-        animate('0.5s ease-in-out')
-      ]),
-      transition('* => void', [
-        animate('0.5s ease-in-out', style({ opacity: 0, transform: 'translateX(100%)' }))
-      ])
-    ])
-  ]
+  styleUrls: ['./all-products.component.scss']
 })
 export class AllProductsComponent implements OnInit {
 
@@ -86,5 +74,4 @@ export class AllProductsComponent implements OnInit {
     this.page = event;
     this.getAllProducts();
   }
-
 }

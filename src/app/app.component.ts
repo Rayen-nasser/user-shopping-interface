@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = !['/login', '/register'].includes(event.url);
-        this.showCard  = ![ '/cart'].includes(event.url);
+        this.showHeader = !['/login', '/register', '/contact'].includes(event.url);
+        this.showCard  = ![ '/cart','/login', '/register'].includes(event.url);
       }
     });
   }
