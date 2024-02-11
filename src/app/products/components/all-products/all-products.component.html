@@ -39,12 +39,12 @@
         let index = index
       "
     >
-      <div class="col-6 col-md-3 ">
+      <div class="col-lg-3 col-md-4 col-sm-6 ">
         <app-product [data]="item"></app-product>
       </div>
     </ng-container>
   </div>
-  <div class="d-flex justify-content-center mt-4" *ngIf="dataSource.length > 0">
+  <div class="d-flex justify-content-center mt-1" *ngIf="dataSource.length > 0">
     <pagination-controls
       (pageChange)="changePage($event)"
       id="products"

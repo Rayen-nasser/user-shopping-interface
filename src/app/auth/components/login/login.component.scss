@@ -7,6 +7,13 @@
 }
 .container img{
   height: 70vh;
+  @media (max-width: 1120px) {
+    height: 50vh;
+   }
+  @media (max-width: 980px) {
+    display: none;
+   }
+
 }
 .form {
   gap: 10px;

@@ -121,7 +121,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.getUserData();
 
     let Model = {
-      userId: this.userDate['userId'  || '_id'],
+      userId: this.userDate['userId'],
       date: new Date(),
       products: products,
       amountTotal: this.totalPrice.toFixed(2),

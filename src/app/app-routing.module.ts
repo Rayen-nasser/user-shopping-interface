@@ -6,6 +6,7 @@ import { CartComponent } from './carts/components/cart/cart.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ContactComponent } from './contact/conponents/contact/contact.component';
+import { ForgetPasswordComponent } from './auth/components/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path:"products", component: AllProductsComponent},
@@ -14,6 +15,8 @@ const routes: Routes = [
   {path:"contact", component: ContactComponent},
   {path:"register", component: RegisterComponent},
   {path:"login", component: LoginComponent},
+  {path:"forget-password", component: ForgetPasswordComponent},
+  {path:"forget-password/:userId/:token", component: ForgetPasswordComponent},
   {path:"**", redirectTo: "products", pathMatch:"full"},
 ];
 

@@ -14,11 +14,14 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = !['/login', '/register', '/contact'].includes(event.url);
-        this.showCard  = ![ '/cart','/login', '/register'].includes(event.url);
+        const urlAfterRedirects = event.urlAfterRedirects || '';
+        const url = event.url || '';
+        this.showHeader = !['/login', '/register', '/contact', '/forget-password'].includes(urlAfterRedirects) && !urlAfterRedirects.startsWith('/forget-password/');
+        this.showCard = !['/cart', '/login', '/register', '/contact', '/forget-password'].includes(url) && !url.startsWith('/forget-password/');
       }
     });
   }
+
 
   ngOnInit(): void {
     this.updateCartCount();

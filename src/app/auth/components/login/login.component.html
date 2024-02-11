@@ -30,9 +30,22 @@
     <button class="submit" (click)="login()" [disabled]="loginForm.invalid">
       Submit
     </button>
+    <button
+      class="submit"
+      style="
+        background-color: transparent;
+        color: royalblue;
+        border: royalblue solid 1px;
+      "
+      routerLink="/forget-password"
+    >
+      Forget Password?
+    </button>
     <p class="signin">
       Already have an acount ?
       <a href="#" routerLink="/register" class="text login-link">Signup</a>
     </p>
   </form>
 </div>
+
+
