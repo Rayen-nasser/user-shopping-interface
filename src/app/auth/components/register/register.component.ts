@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       username: ["", [Validators.required, Validators.minLength(5)]],
       email: ["", [Validators.required, Validators.email]],
       phoneNumber: ["", [Validators.required]],
-      profile: ["", [Validators.required]],
+      profile: [""],
       password: ["", [Validators.required, Validators.minLength(8)]],
       passwordConfirm: ["", [Validators.required, Validators.minLength(8)]]
     });
@@ -68,10 +68,10 @@ export class RegisterComponent implements OnInit {
 
     Object.entries(userData).forEach(([key, value]) => {
       if(key !== "passwordConfirm"){
-        if(key == 'profile'){
+        if(key == 'profile' && value !== ""){
           formData.append('image', value)
         }else{
-          formData.append(key, value);
+          key !== 'profile' ? formData.append(key, value): ""
         }
       }
     });

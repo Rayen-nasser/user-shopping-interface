@@ -7,11 +7,13 @@ import { RegisterComponent } from './auth/components/register/register.component
 import { LoginComponent } from './auth/components/login/login.component';
 import { ContactComponent } from './contact/conponents/contact/contact.component';
 import { ForgetPasswordComponent } from './auth/components/forget-password/forget-password.component';
+import { ReservationsComponent } from './reservation-history/components/reservations/reservations.component';
 
 const routes: Routes = [
   {path:"products", component: AllProductsComponent},
   {path:"details/:id", component: ProductDetailsComponent},
   {path:"cart", component: CartComponent},
+  {path:"reservation", component: ReservationsComponent},
   {path:"contact", component: ContactComponent},
   {path:"register", component: RegisterComponent},
   {path:"login", component: LoginComponent},

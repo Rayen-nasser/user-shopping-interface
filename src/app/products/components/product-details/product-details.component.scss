@@ -59,7 +59,7 @@
   font-size: 18px;
   margin: 10px 0 0 12px;
   position: relative;
-  color: rgb(254, 193, 193);
+  color: $text-color;
 }
 
 .box.one .discount:before {
@@ -67,7 +67,7 @@
   position: absolute;
   height: 1px;
   width: 75px;
-  background: rgb(254, 193, 193);
+  background: $text-color;
   top: 50%;
   left: -8px;
 }
@@ -174,23 +174,7 @@
   position: absolute;
   margin-top: 55px;
 
-  label {
-    margin-right: 10px;
-    font-size: 16px;
-    color: $text-color;
-  }
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    max-width: 80px;
-    outline: none;
-    margin-right: 10px;
-  }
-
-  button {
+  .save-btn {
     outline: none;
     border: none;
     padding: 8px 16px;
@@ -209,3 +193,14 @@
     }
   }
 }
+
+
+.card__counter {
+  background: $button-text-color;
+  margin-right: 15px;
+}
+
+.card__counter-score, .card__btn {
+  color:$primary-color;
+}
+

@@ -17,6 +17,7 @@ import { CartsModule } from './carts/carts.module';
 import { AuthModule } from './auth/auth.module';
 import { ContactModule } from './contact/contact.module';
 import { GeoapifyGeocoderAutocompleteModule } from '@geoapify/angular-geocoder-autocomplete';
+import { ReservationHistoryModule } from './reservation-history/reservation-history.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GeoapifyGeocoderAutocompleteModule } from '@geoapify/angular-geocoder-a
     ReactiveFormsModule,
     HttpClientModule,
     AuthModule,
+    ReservationHistoryModule,
     ContactModule,
     AppRoutingModule,
     ToastrModule.forRoot(),

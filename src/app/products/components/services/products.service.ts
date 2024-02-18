@@ -62,7 +62,7 @@ export class ProductsService {
     );
 
     if (existingProductIndex !== -1) {
-      existingCart[existingProductIndex].quantity += quantity;
+      existingCart[existingProductIndex].quantity = quantity;
       localStorage.setItem(cartKey, JSON.stringify(existingCart));
       return;
     }

@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-
+import * as numeral from 'numeral';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,6 +12,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class CartComponent implements OnInit, OnDestroy {
   cartProducts: any[] = [];
+  numeral = numeral;
 
   totalPrice: any;
   userDate: any;
@@ -25,6 +26,7 @@ export class CartComponent implements OnInit, OnDestroy {
     public dialog: MatDialog
   ) {
     this.getPriceTotal();
+    this.getUserData();
   }
 
   ngOnInit(): void {
@@ -35,9 +37,6 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     this.getProductsInCart();
-
-    this.getUserData();
-    console.log(this.userDate);
 
     if (this.cartProducts.length > 0) {
       this.cardVide = true;
@@ -92,23 +91,22 @@ export class CartComponent implements OnInit, OnDestroy {
     this.totalPrice = 0;
     window.dispatchEvent(new StorageEvent('storage', { key: 'cart' }));
     this.getPriceTotal();
-    this.cardVide = false
-    this.loadLottie()
+    this.cardVide = false;
+    this.loadLottie();
   }
 
   getUserData() {
-    let token = localStorage.getItem('token') ;
+    let token = localStorage.getItem('token');
 
     if (token) {
-        this.userDate = JSON.parse(window.atob(token.split('.')[1]));
+      this.userDate = JSON.parse(window.atob(token.split('.')[1]));
     }
   }
-
 
   order() {
     if (!localStorage.getItem('token')) {
       this.toaster.error('You Must Be Authentication');
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
       return;
     }
 
@@ -122,12 +120,11 @@ export class CartComponent implements OnInit, OnDestroy {
 
     let Model = {
       userId: this.userDate['userId'],
-      date: new Date(),
       products: products,
       amountTotal: this.totalPrice.toFixed(2),
     };
 
-    this.sendOrder(Model)
+    this.sendOrder(Model);
   }
 
   sendOrder(model: any) {
@@ -137,12 +134,12 @@ export class CartComponent implements OnInit, OnDestroy {
     dialogConfig.height = 'auto';
     dialogConfig.disableClose = true;
     dialogConfig.data = {
-      model
+      model,
     };
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.router.navigate(['/products'])
+      this.router.navigate(['/products']);
     });
   }
 
@@ -156,15 +153,22 @@ export class CartComponent implements OnInit, OnDestroy {
 
   loadLottie() {
     const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs';
+    script.src =
+      'https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs';
     script.type = 'module';
     document.body.appendChild(script);
 
     const player = document.createElement('dotlottie-player');
-    player.setAttribute('src', 'https://lottie.host/fc78468d-b992-41dd-b54a-91baf34802a9/8r5bOEakmE.json');
+    player.setAttribute(
+      'src',
+      'https://lottie.host/73340c1b-6693-4b1c-a02d-47dd7bf959d6/VHsU4m8Y3Z.json'
+    );
     player.setAttribute('background', 'transparent');
     player.setAttribute('speed', '1');
-    player.setAttribute('style', 'display: flex;justify-content: center;align-items: center;height: 80vh;');
+    player.setAttribute(
+      'style',
+      'display: flex;justify-content: center;align-items: center;height: 80vh;'
+    );
     player.setAttribute('loop', '');
     player.setAttribute('autoplay', '');
     document.body.appendChild(player);

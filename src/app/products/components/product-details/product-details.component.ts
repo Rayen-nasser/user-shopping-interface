@@ -10,7 +10,6 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() data!: any;
-  @Output() item = new EventEmitter();
   dataProduct!: any;
   idProduct: any;
   quantity: number = 1;
@@ -28,7 +27,27 @@ export class ProductDetailsComponent implements OnInit {
     this.services.getProductDetails(this.idProduct).subscribe((res: any) => {
       this.dataProduct = res;
     });
+    this.findQuantityInCart()
+  }
+
+  findQuantityInCart(){
     this.done = this.services.isProductInCart(this.idProduct)
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
+    let index = cart.findIndex((item: any) => {
+      return item.item._id === this.idProduct
+    })
+
+    this.quantity = cart[index].quantity
+  }
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 0) {
+      this.quantity--;
+    }
   }
 
   add() {

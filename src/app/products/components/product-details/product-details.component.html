@@ -11,8 +11,8 @@
         <i class="bi bi-star-fill"></i>
       </div>
       <div class="price-box">
-        <div class="discount">${{ dataProduct.price + 299 }}</div>
-        <div class="price">${{ dataProduct.price }}</div>
+        <div class="discount">{{ dataProduct.price + 299 }}</div>
+        <div class="price">TND {{ dataProduct.price }}</div>
       </div>
 
       <!-- New button and quantity input section -->
@@ -21,8 +21,8 @@
         <button *ngIf="done"><i class="bi bi-check-circle-fill"></i> Done</button>
       </div>
 
-      <div class="quantity-input" *ngIf="addButton">
-        <label for="quantity">Quantity:</label>
+      <div class="quantity-input " *ngIf="addButton">
+        <!-- <label for="quantity">Quantity:</label>
         <input
           type="number"
           id="quantity"
@@ -30,7 +30,23 @@
           min="1"
           [max]="data.quantity"
         />
-        <button (click)="add(); addButton = false; done = true">Save</button>
+        <button (click)="add(); addButton = false; done = true">Save</button> -->
+
+        <div class="card__counter quantity">
+          <button  class="card__btn"
+            (click)="decreaseQuantity()"
+          >
+            -
+          </button>
+          <div class="card__counter-score">{{ quantity }}</div>
+          <button
+            (click)="increaseQuantity()"
+            class="card__btn card__btn-plus"
+          >
+            +
+          </button>
+        </div>
+        <button class="save-btn" (click)="add(); addButton = false; done = true">Save</button>
       </div>
     </div>
   </div>

@@ -31,7 +31,6 @@
                   class="form-control"
                   (change)="detectChange($event)"
                   type="text"
-                  [(ngModel)]="item.quantity"
                   min="1"
                   [max]="item.item.quantity"
                 />
@@ -87,7 +86,7 @@
           <tr *ngFor="let item of cartProducts; let index = index">
             <td><img src="{{ item.item.imageUrl }}" alt="" /></td>
             <td>{{ item.item.name }}</td>
-            <td>{{ item.item.price }} dt</td>
+            <td>{{ item.item.price }} TND</td>
             <td>
               <div class="card__counter quantity">
                 <button (click)="decreaseQuantity(index)" class="card__btn">
@@ -102,7 +101,7 @@
                 </button>
               </div>
             </td>
-            <td>{{ (item.item.price * item.quantity).toFixed(2) }} dt</td>
+            <td>{{ (item.item.price * item.quantity).toFixed(2) }} TND</td>
             <td>
               <div
                 style="
@@ -125,17 +124,29 @@
         <tfoot>
           <tr>
             <th class="text-end" colspan="3">
-              <!-- Total: <span id="totalPrice"> {{totalPrice.toFixed(2)}}</span> dt -->
+              <!-- Total: <span id="totalPrice"> {{totalPrice.toFixed(2)}}</span> TND -->
             </th>
             <th></th>
             <th></th>
             <th>
-              <div [attr.data-tooltip]="'Total: ' + totalPrice.toFixed(2) + ' dt'" class="button">
+              <div
+                [attr.data-tooltip]="'Total: ' + numeral(totalPrice).format('0,0') + ' TND'"
+                class="button"
+              >
                 <div class="button-wrapper">
-                  <div class="text" >Buy Now</div>
-                  <span class="icon"(click)="order()">
-                    <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+                  <div class="text">Buy Now</div>
+                  <span class="icon" (click)="order()">
+                    <svg
+                      viewBox="0 0 16 16"
+                      class="bi bi-cart2"
+                      fill="currentColor"
+                      height="16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                      ></path>
                     </svg>
                   </span>
                 </div>
@@ -143,8 +154,14 @@
             </th>
           </tr>
         </tfoot>
-
       </table>
     </div>
   </div>
 </ng-container>
+
+<!-- <ng-container *ngIf="!cardVide" >
+  <div class="d-flex justify-content-center align-items-center vh-90">
+    <img src="/assets/shopping.png" alt="" >
+  </div>
+</ng-container> -->
+

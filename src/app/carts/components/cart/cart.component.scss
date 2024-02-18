@@ -3,7 +3,7 @@
 .cartBox {
   border-radius: 5px;
   padding: 0 20px;
-  margin: 50px 0;
+  margin: 30px 0;
 
   .table {
 
@@ -43,7 +43,7 @@
           img {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
+            border-radius: 15%;
           }
         }
 
@@ -88,34 +88,6 @@ tfoot {
       padding: 10px;
     }
   }
-}
-
-.card__counter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  padding: 5px;
-  background: #d4d4d4;
-  border-radius: 50px;
-}
-
-.card__counter-score, .card__btn {
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--main-color);
-}
-
-.card__btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: none;
-  background: transparent;
-}
-
-.card__btn-plus {
-  background: var(--bg-color);
 }
 
 
@@ -187,9 +159,9 @@ tfoot {
 /* btn buy */
 
 .button {
-  --width: 100px;
-  --height: 35px;
-  --tooltip-height: 35px;
+  --width: 120px;
+  --height: 40px;
+  --tooltip-height: 40px;
   --tooltip-width: 200px;
   --gap-between-tooltip-to-button: 18px;
   --button-color: #222;

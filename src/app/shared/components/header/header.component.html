@@ -3,16 +3,17 @@
 <nav [class.active]="navActive">
   <div class="nav-bar">
     <i class='bi bi-list sidebarOpen' (click)="toggleNav()"></i>
-    <span class="logo navLogo"><a href="#">Shopping TN</a></span>
+    <span class="logo navLogo"><a >Shopping TN</a></span>
     <div class="menu">
       <div class="logo-toggle">
-        <span class="logo"><a href="#">STN</a></span>
+        <span class="logo"><a >STN</a></span>
         <i class='bi bi-x-lg siderbarClose'></i>
       </div>
       <ul class="nav-links">
-        <li><a href="#" routerLink="/products" routerLinkActive="active">Products</a></li>
-        <li><a href="#"routerLink="/cart" routerLinkActive="active">Cart</a></li>
-        <li><a href="#" routerLink="/contact">Contact</a></li>
+        <li><a  routerLink="/products" routerLinkActive="active">Products</a></li>
+        <li><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
+        <li><a  *ngIf="token" routerLink="/reservation" routerLinkActive="active">History</a></li>
+        <li><a  routerLink="/contact">Contact</a></li>
       </ul>
     </div>
     <div class="darkLight-authBox">
@@ -25,7 +26,6 @@
         </ng-container>
         <ng-container *ngIf="!token">
           <a  routerLink="/login">Login</a>
-          <!-- <a class="nav-link" routerLink="/login">Login</a> -->
         </ng-container>
       </div>
     </div>
