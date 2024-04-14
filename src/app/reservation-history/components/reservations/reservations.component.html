@@ -1,0 +1,45 @@
+<ng-container *ngIf="carts.length !== 0">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="card mx-2 col-lg-3 col-md-4 col-sm-6 my-4" *ngFor="let cart of carts">
+        <div class="card-title">
+          <span class="code">
+            {{ cart.code }}
+          </span>
+          <span class="date">{{ cart.date | date }}</span>
+        </div>
+        <div class="sale" [ngStyle]="{'color': getStatusColor(cart.sale)}">{{ cart.sale }}</div>
+        <div class="card-subtitle">
+          <div class="address mb-3">
+            {{ cart.address?.properties.formatted }}
+          </div>
+          <hr class="card-divider" />
+          <div class="row d-flex justify-content-end p-1 my-1" *ngFor="let product of cart.products">
+            <div class="col-8">{{ product.productId.name }} ({{ product.quantity }})</div>
+            <div class="col-4">{{ numeral(product.productId.price * product.quantity).format('0,0') }}</div>
+          </div>
+        </div>
+        <hr class="card-divider" />
+        <div class="card-footer">
+          <ng-container *ngIf="cart.sale !== 'delivered'">
+            <button class="card-btn" (click)="cancel(cart._id)">
+              Cancel
+            </button>
+          </ng-container>
+          <ng-container *ngIf="cart.sale === 'delivered'">
+              <div></div>
+          </ng-container>
+          <div class="card-price"><span>{{ numeral(cart.amountTotal).format('0,0') }} TND</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+
+
+<ng-container *ngIf="carts.length === 0">
+  <div class="d-flex justify-content-center align-items-center vh-90">
+    <img src="/assets/shopping.png" alt="" >
+  </div>
+</ng-container>

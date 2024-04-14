@@ -1,0 +1,39 @@
+@import 'src/styles.scss';
+
+/* Body */
+.card {
+  justify-content: center;
+  width: 280px;
+  height: fit-content;
+  .card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    color: #3c4053;
+    & > .code {
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 550;
+    }
+    & > .date {
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
+  .address{
+    font-size: 15px;
+  }
+  .sale{
+    position: absolute;
+    top: -30px;
+    left: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  .card-btn{
+    
+  }
+}
+
