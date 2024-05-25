@@ -49,4 +49,8 @@ import { ReservationHistoryModule } from './reservation-history/reservation-hist
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    localStorage.removeItem('token')
+  }
+}

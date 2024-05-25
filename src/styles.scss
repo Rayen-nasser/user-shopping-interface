@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import "~@geoapify/geocoder-autocomplete/styles/minimal.css";
 * {
@@ -345,34 +349,4 @@ body {
 .custum-file-upload input {
   display: none;
 }
-
-/*=========== quantity btn =================*/
-.card__counter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  padding: 5px;
-  background: #d4d4d4;
-  border-radius: 50px;
-}
-
-.card__counter-score, .card__btn {
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--main-color);
-}
-
-.card__btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: none;
-  background: transparent;
-}
-
-.card__btn-plus {
-  background: var(--bg-color);
-}
-
 

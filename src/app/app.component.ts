@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateCartCount();
-
     window.addEventListener('storage', this.handleStorageEvent.bind(this));
   }
 

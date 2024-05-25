@@ -27,11 +27,11 @@ export class DialogComponent implements OnInit{
   }
 
   reserve(){
-    const cartItem = {
+    const cartItems = {
       ...this.data.model,
       address: this.address
     }
-    this.service.createNewCart(cartItem).subscribe((res: any) => {
+    this.service.createNewCart(cartItems).subscribe((res: any) => {
       this.toaster.success(res.message);
       this.close()
       localStorage.removeItem('cart');

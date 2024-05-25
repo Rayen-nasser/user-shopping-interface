@@ -17,7 +17,6 @@ export class CartComponent implements OnInit, OnDestroy {
   totalPrice: any;
   userDate: any;
   cardVide: boolean = false;
-  private playerAdded = false;
 
   constructor(
     private service: CartsService,
@@ -31,10 +30,6 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const cartData = localStorage.getItem('cart');
-    if (!cartData && !this.playerAdded) {
-      this.loadLottie();
-      this.playerAdded = true;
-    }
 
     this.getProductsInCart();
 
@@ -92,7 +87,6 @@ export class CartComponent implements OnInit, OnDestroy {
     window.dispatchEvent(new StorageEvent('storage', { key: 'cart' }));
     this.getPriceTotal();
     this.cardVide = false;
-    this.loadLottie();
   }
 
   getUserData() {
@@ -147,30 +141,6 @@ export class CartComponent implements OnInit, OnDestroy {
     const player = document.querySelector('dotlottie-player');
     if (player) {
       player.remove();
-      this.playerAdded = false;
     }
-  }
-
-  loadLottie() {
-    const script = document.createElement('script');
-    script.src =
-      'https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs';
-    script.type = 'module';
-    document.body.appendChild(script);
-
-    const player = document.createElement('dotlottie-player');
-    player.setAttribute(
-      'src',
-      'https://lottie.host/73340c1b-6693-4b1c-a02d-47dd7bf959d6/VHsU4m8Y3Z.json'
-    );
-    player.setAttribute('background', 'transparent');
-    player.setAttribute('speed', '1');
-    player.setAttribute(
-      'style',
-      'display: flex;justify-content: center;align-items: center;height: 80vh;'
-    );
-    player.setAttribute('loop', '');
-    player.setAttribute('autoplay', '');
-    document.body.appendChild(player);
   }
 }
