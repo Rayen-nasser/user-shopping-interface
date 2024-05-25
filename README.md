@@ -10,6 +10,10 @@ This project is a user shopping interface developed using Angular. It provides u
 - Track order status
 - Responsive design for seamless experience across devices
 
+## Demo
+
+Check out the live demo https://shoppingtn.netlify.app/
+
 ## Installation
 
 To run this project locally, follow these steps:
