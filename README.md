@@ -1,27 +1,49 @@
-# MakertAdmin
+# User Shopping Interface
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+This project is a user shopping interface developed using Angular. It provides users with a visually appealing and intuitive interface to browse products, view product details, and add products to their cart.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Browse and view product details
+- Add products to cart with one click
+- View and manage shopping cart
+- Track order status
+- Responsive design for seamless experience across devices
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To run this project locally, follow these steps:
 
-## Build
+1. Clone the repository:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   git clone https://github.com/Rayen-nasser/user-shopping-interface.git
 
-## Running unit tests
+2. Navigate to the project directory:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+    cd user-shopping-interface
 
-## Running end-to-end tests
+3. Install dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+    npm install
 
-## Further help
+4. Start the development server:
+    ```bash
+    npm start
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5. Open your browser and visit http://localhost:4200 to view the application.
+
+
+## Technologies Used
+- Angular
+- HTML/CSS
+- TypeScript
+- Bootstrap
+- Tailwind
+- Angular Material
+
+
+## Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests for bug fixes or enhancements.
